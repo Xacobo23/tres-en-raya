@@ -1,8 +1,8 @@
 package src.Motor3R;
 
 public class TresEnRaya {
-    char[][] tablero = new char[3][3];
-
+    private char[][] tablero = new char[3][3];
+    private String dificultad;
     public TresEnRaya() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -12,7 +12,9 @@ public class TresEnRaya {
     }
 
     public char[][] getTablero() {
-        return tablero;
+        char[][] copiaTablero = new char[3][3];
+        copiaTablero = tablero.clone();
+        return copiaTablero;
     }
 
     public void turnoJugador(int x, int y) {
@@ -33,7 +35,7 @@ public class TresEnRaya {
     }
 
     public void turnoMaquina(String dificultad) {
-        if (dificultad.equals("facil")) {
+        if (dificultad.equals("F")) {
             int x = (int) (Math.random() * 3);
             int y = (int) (Math.random() * 3);
             if (tablero[x][y] == '·') {
@@ -41,11 +43,43 @@ public class TresEnRaya {
             } else {
                 turnoMaquina(dificultad);
             }
-        } else if (dificultad.equals("medio")) {
+        } else if (dificultad.equals("M")) {
 
-        } else if (dificultad.equals("dificil")) {
+        } else if (dificultad.equals("D")) {
+
         }
     }
+    public void setDificultad(String dificultad){
+        this.dificultad = dificultad;
+    }
+    public String getDificultad(){
+        return dificultad;
+    }
+
+    public boolean posibleVictoria() {
+
+        for (int i = 0; i < 3; i++) {
+            if (tablero[i][0] == 'X' && tablero[i][1] == 'X' && tablero[i][2] == '·') {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (tablero[0][i] == 'X' && tablero[1][i] == 'X' && tablero[2][i] == '·') {
+                return true;
+            }
+        }
+
+        if (tablero[0][0] == 'X' && tablero[1][1] == 'X' && tablero[2][2] == '·') {
+            return true;
+        }
+        if (tablero[0][2] == 'X' && tablero[1][1] == 'X' && tablero[2][0] == '·') {
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean comprobarGanador(){
         if((tablero[0][0]=='X' && tablero[0][1]=='X' && tablero[0][2]=='X')){
             return true;
