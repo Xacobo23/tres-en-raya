@@ -11,7 +11,6 @@ public class InterfaceConsola {
     }
     
     public InterfaceConsola(){
-
         juego = new TresEnRaya();
         inicio();
         juego();
@@ -48,8 +47,7 @@ public class InterfaceConsola {
             }
             juego = new TresEnRaya();
             inicio();
-        }
-        
+        } 
     }
 
     public void partida(){
@@ -64,15 +62,14 @@ public class InterfaceConsola {
                 continue;
             }
             juego.turnoJugador(y, x);
-            
-            
-            //juego.comprobarGanador();
+
             if(juego.comprobarGanador()){
                 printTablero(juego.getTablero());
                 System.out.println();
                 System.out.println("Ganaste");
                 break;
             }
+
             juego.turnoMaquina(juego.getDificultad());
             if(juego.comprobarPerdedor()){
                 printTablero(juego.getTablero());
@@ -80,7 +77,7 @@ public class InterfaceConsola {
                 System.out.println("Perdiste");
                 break;
             }
-            //juego.comprobarEmpate();
+
             if(juego.comprobarEmpate()){
                 printTablero(juego.getTablero());
                 System.out.println();
@@ -106,7 +103,6 @@ public class InterfaceConsola {
                 if(j==1){
                     System.out.print("|");
                 }
-                
             }
         }
         System.out.println();

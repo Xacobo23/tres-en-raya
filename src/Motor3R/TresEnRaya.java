@@ -1,9 +1,15 @@
 package src.Motor3R;
 
+/**
+ * Esta clase representa el motor del juego Tres en Raya.
+ */
 public class TresEnRaya {
     private char[][] tablero = new char[3][3];
     private String dificultad;
 
+    /**
+     * Constructor de la clase TresEnRaya. Inicializa el tablero con espacios en blanco.
+     */
     public TresEnRaya() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -12,12 +18,21 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para obtener una copia del tablero actual del juego.
+     * @return Una copia del tablero actual.
+     */
     public char[][] getTablero() {
         char[][] copiaTablero = new char[3][3];
         copiaTablero = tablero.clone();
         return copiaTablero;
     }
 
+    /**
+     * Método para que el jugador realice su turno colocando una ficha en una posición específica.
+     * @param x La coordenada x en el tablero.
+     * @param y La coordenada y en el tablero.
+     */
     public void turnoJugador(int x, int y) {
         if (tablero[x][y] == '·') {
             tablero[x][y] = 'X';
@@ -26,6 +41,12 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para verificar si una casilla del tablero está ocupada.
+     * @param x La coordenada x en el tablero.
+     * @param y La coordenada y en el tablero.
+     * @return true si la casilla está ocupada, false si está vacía.
+     */
     public boolean casillaOcupada(int x, int y) {
         if (tablero[x][y] == '·') {
             return false;
@@ -34,6 +55,10 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para que la máquina realice su turno según la dificultad especificada.
+     * @param dificultad La dificultad del juego: "F" para fácil, "M" para medio, "D" para difícil.
+     */
     public void turnoMaquina(String dificultad) {
         if (dificultad.equals("F")) {
             int x = (int) (Math.random() * 3);
@@ -82,15 +107,29 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para establecer la dificultad del juego.
+     * @param dificultad La dificultad del juego: "F" para fácil, "M" para medio, "D" para difícil.
+     */
     public void setDificultad(String dificultad) {
         this.dificultad = dificultad;
     }
 
+    /**
+     * Método para obtener la dificultad actual del juego.
+     * @return La dificultad del juego: "F" para fácil, "M" para medio, "D" para difícil.
+     */
     public String getDificultad() {
         return dificultad;
     }
 
-    public boolean posibleVictoria(int x, int y) {
+    /**
+     * Método para verificar si la máquina tiene una posible victoria en la siguiente jugada.
+     * @param x La coordenada x en el tablero.
+     * @param y La coordenada y en el tablero.
+     * @return true si la máquina tiene una posible victoria, false de lo contrario.
+     */
+    private boolean posibleVictoria(int x, int y) {
 
         // Lineas
 
@@ -181,7 +220,13 @@ public class TresEnRaya {
         return false;
     }
 
-    public boolean posibleVictoriaJugador(int x, int y) {
+    /**
+     * Método para verificar si el jugador tiene una posible victoria en la siguiente jugada.
+     * @param x La coordenada x en el tablero.
+     * @param y La coordenada y en el tablero.
+     * @return true si el jugador tiene una posible victoria, false de lo contrario.
+     */
+    private boolean posibleVictoriaJugador(int x, int y) {
 
         // Lineas
 
@@ -272,6 +317,10 @@ public class TresEnRaya {
         return false;
     }
 
+    /**
+     * Método para verificar si el jugador ha ganado la partida.
+     * @return true si el jugador ha ganado, false de lo contrario.
+     */
     public boolean comprobarGanador() {
         if ((tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X')) {
             return true;
@@ -301,6 +350,10 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para verificar si la máquina ha ganado la partida.
+     * @return true si la máquina ha ganado, false de lo contrario.
+     */
     public boolean comprobarPerdedor() {
         if ((tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O')) {
             return true;
@@ -330,6 +383,10 @@ public class TresEnRaya {
         }
     }
 
+    /**
+     * Método para verificar si la partida ha terminado en empate.
+     * @return true si la partida ha terminado en empate, false de lo contrario.
+     */
     public boolean comprobarEmpate() {
         int contador = 0;
         for (int i = 0; i < 3; i++) {
