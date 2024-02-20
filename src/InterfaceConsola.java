@@ -57,6 +57,13 @@ public class InterfaceConsola {
             x = sc.nextInt()-1;
             System.out.println("Ingrese la coordenada y");
             y = sc.nextInt()-1;
+            while(x>3||y>3){
+                System.out.println("Coordenadas no validas");
+                System.out.println("Ingrese la coordenada x");
+                x = sc.nextInt()-1;
+                System.out.println("Ingrese la coordenada y");
+                y = sc.nextInt()-1;
+            }
             if(juego.casillaOcupada(y, x)==true){
                 System.out.println("Casilla ocupada");
                 continue;
