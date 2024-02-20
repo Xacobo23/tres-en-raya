@@ -87,10 +87,6 @@ public class InterfaceConsola {
                 System.out.println("Empate");
                 break;
             }
-            else{
-                
-            }
-            
             printTablero(juego.getTablero());
         }
     }
@@ -115,5 +111,4 @@ public class InterfaceConsola {
         }
         System.out.println();
     }
-
 }
